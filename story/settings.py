@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'stories',
     'comments',
+    'likes',
 
 ]
 
