@@ -1,7 +1,10 @@
 from rest_framework import serializers
 from .models import Story, Category
 
-
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
 
 class StorySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -26,6 +29,8 @@ class StorySerializer(serializers.ModelSerializer):
                 'Image height larger than 4096px'
             )
         return value
+    
+    
     
     def get_is_owner(self, obj):
         request = self.context['request']
