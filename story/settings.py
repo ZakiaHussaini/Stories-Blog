@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'rest_framework',
     'stories',
+    'comments',
 
 ]
 
