@@ -1,14 +1,41 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from story.permissions import IsOwnerOrReadOnly
 from .models import Story
 from .serializers import StorySerializer
-
+from django.db.models import Count
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class StoryList(generics.ListCreateAPIView):
     serializer_class = StorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Story.objects.all()
+    queryset = Story.objects.annotate(
+        like_count=Count('like', distinct=True),
+        comment_count = Count('comment', distinct=True)
+    ).order_by('-created_at')
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'like__owner__profile',
+        'owner__profile',
+    ]
+    
+    search_fields = [ 
+    'owner__username',
+    'title',
+    'category__name',
+    ]
+
+    ordering_fields = [
+        'like_count',
+        'comment_count',
+        'like__created_at',
+    ]
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -18,7 +45,10 @@ class StoryList(generics.ListCreateAPIView):
 class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StorySerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Story.objects.all()
+    queryset = Story.objects.annotate(
+        like_count=Count('like', distinct=True),
+        comment_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
 
 
 

@@ -55,10 +55,13 @@ INSTALLED_APPS = [
     'cloudinary',
     'profiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'stories',
     'comments',
     'likes',
     'followers',
+    'django_filters',
 
 ]
 

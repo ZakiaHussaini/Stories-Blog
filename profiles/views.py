@@ -3,6 +3,7 @@ from story.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
 from django.db.models import Count
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ProfileList(generics.ListAPIView):
@@ -14,7 +15,13 @@ class ProfileList(generics.ListAPIView):
     
     serializer_class = ProfileSerializer
     filter_backends = [
-       filters.OrderingFilter
+       filters.OrderingFilter,
+       DjangoFilterBackend,
+    ]
+
+    filterset_fields = [
+    'owner__following__followed__profile',
+    'owner__followed__owner__profile',
     ]
     
     ordering_fields = [
