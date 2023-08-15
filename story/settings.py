@@ -41,7 +41,7 @@ SECRET_KEY = 'django-insecure-eg5@7y0^qpd)i-)=)!xy06s-3ubn0qw(fb36=!mv6ka=t7is%m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-zakiahussaini-stories-bl-nmwmfha02w.us2.codeanyapp.com']
 
 
 # Application definition
