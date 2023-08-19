@@ -43,7 +43,15 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', 'story-blog-24bc3af065de.herokuapp.com']
 
+BASE_URL = ''
 
+if DEBUG:
+    BASE_URL = 'http://localhost:8000'
+else:
+    BASE_URL = 'https://story-blog-24bc3af065de.herokuapp.com/' 
+    
+    
+    
 # Application definition
 
 INSTALLED_APPS = [
