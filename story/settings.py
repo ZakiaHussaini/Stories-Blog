@@ -133,6 +133,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000', 
 ]
 
+CLIENT_ORIGINS = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
+]
+
 # if 'CLIENT_ORIGIN' in os.environ:
 #     CORS_ALLOWED_ORIGINS = [
 #         os.environ.get('CLIENT_ORIGIN')
