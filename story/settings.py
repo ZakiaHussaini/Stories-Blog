@@ -41,7 +41,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', 'story-blog-24bc3af065de.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','story-blog-24bc3af065de.herokuapp.com']
 
 BASE_URL = ''
 
@@ -131,6 +131,10 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000', 
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
 ]
 
 CLIENT_ORIGINS = [
