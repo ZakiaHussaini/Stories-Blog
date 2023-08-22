@@ -6,6 +6,20 @@ from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
 
+
+class CategoryListView(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    
+
+
+class StoryByCategoryView(generics.ListAPIView):
+    serializer_class = StorySerializer
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']
+        return Story.objects.filter(category_id=category_id)
+    
+
 class StoryList(generics.ListCreateAPIView):
     serializer_class = StorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
