@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, filters
 from story.permissions import IsOwnerOrReadOnly
-from .models import Story
-from .serializers import StorySerializer
+from .models import Story, Category
+from .serializers import StorySerializer, CategorySerializer
 from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -38,7 +38,9 @@ class StoryList(generics.ListCreateAPIView):
     ]
     
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        category_id = self.kwargs.get('category_id')
+        category = Category.objects.get(id=category_id)
+        serializer.save(owner=self.request.user, category=category)
         
         
         
