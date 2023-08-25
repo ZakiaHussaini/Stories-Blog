@@ -42,15 +42,17 @@ class StorySerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
     
-    
+
     def get_like_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
-                owner = user, story = obj
+                owner=user, story=obj
             ).first()
-            like = Like.id if like else None
+            return like.id if like else None
         return None
+    
+    
     
     class Meta:
         model = Story
