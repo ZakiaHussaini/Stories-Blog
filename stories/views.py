@@ -6,7 +6,6 @@ from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-
 class CategoryListView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
