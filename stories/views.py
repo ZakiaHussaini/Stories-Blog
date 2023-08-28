@@ -51,9 +51,7 @@ class StoryList(generics.ListCreateAPIView):
     ]
     
     def perform_create(self, serializer):
-        category_id = self.kwargs.get('category_id')
-        category = Category.objects.get(id=category_id)
-        serializer.save(owner=self.request.user, category=category)
+        serializer.save(owner=self.request.user)
         
         
         
