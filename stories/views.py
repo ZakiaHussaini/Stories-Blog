@@ -17,7 +17,8 @@ class StoryByCategoryView(generics.ListAPIView):
     def get_queryset(self):
         category_id = self.kwargs['category_id']
         return Story.objects.filter(category_id=category_id)
-    
+   
+ 
 
 class StoryList(generics.ListCreateAPIView):
     serializer_class = StorySerializer
@@ -36,6 +37,7 @@ class StoryList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',
         'like__owner__profile',
         'owner__profile',
+        'category', 
     ]
     
     search_fields = [ 
@@ -51,7 +53,10 @@ class StoryList(generics.ListCreateAPIView):
     ]
     
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        category_id = self.request.data.get('category')
+        category = Category.objects.get(id=category_id)
+        serializer.save(owner=self.request.user, category=category)
+
         
         
         
