@@ -205,16 +205,9 @@ The following technologies were used throughout the development of the project:
 - ### The following components have been implemented in this project and reused throughout the app:
   - **Asset:** Using this component, spinners are loaded throughout the site and user messages are displayed if search results are not found.
   - **Avatar:** Users can identify each other more easily with the help of this component, which is used throughout the site for user profile images.
-  - **MoreDropdown Page:** In the app, this component is used to edit posts and profiles by users/owners.
-  - **SideNavBar:** This component is present on every page of the application. The user can access most site features in one place, from any page, which improves UX. It also collapses into a sidenavbar menu for screen sizes medium and below.
-  - **LoggedInIcons:** Using this component, logged in users will be able to access all app links from the sidenavbar.
-  - **LoggedOutIcons:** Using this component, guest users will be able to access all app links from the sidenavbar.
-  - **NotFound:** Invalid urls were handled by this component. If users try to input invalid urls, they will see a page not found message.
-  - **UseRedirect:** When users access a page they shouldn't be viewing, this component redirects them to their home page.
-  - **UseClickOutsideToggle:** This component helps collapse a sideNavBar menu by clicking any link within the menu or by clicking outside the menu to collapse it for a smooth UX. Which By default, you must click on each link in the sidenavbar menu and then press the hamburger icon again to collapse it.
+  - **MoreDropdown** In the app, this component is used to edit posts and profiles by users/owners.
+  - **NavBar:** This component is present on every page of the application. The user can access most site features in one place, from any page, which improves UX. It also collapses into a sidenavbar menu for screen sizes medium and below.
  
-
-
 
 
 
@@ -426,13 +419,7 @@ The site is now live and operational
   - [Code Institute LMS](https://learn.codeinstitute.net/ci_program/diplomainsoftwaredevelopmentadvancedfrontend), in particular the [Django Rest Framework Walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRF+2021_T1/courseware/f775d54df4da44d18309888b3fe884f7/bc5fbada70104d489aa0363a03d8bda8/)
   - [W3Schools](https://www.w3schools.com/) 
   - [Stack Overflow](https://stackoverflow.com/)
-  - [MDN Web Docs](https://developer.mozilla.org/en-US/)
   - [Django Rest Framework Documentation](https://www.django-rest-framework.org/)
 
 
-  - [Sandra Atino](https://github.com/Atinos31)
-  - [Suzy Bennett](https://github.com/suzybee1987)
 
-- Tutor Support, Student Care and the Slack Community at [Code Institute](https://codeinstitute.net/global/) for their support.
-
-- And last but not least, my husband [Antoine Masson](https://www.linkedin.com/in/antoine-masson-55b65094/) for helping me through the stressful moments and for supporting us financially while I make this big career change. 
