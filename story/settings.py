@@ -41,7 +41,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','story-blog-24bc3af065de.herokuapp.com']
+ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
+    'localhost',
+]
 
 BASE_URL = ''
 
@@ -72,7 +75,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
-    'corsheaders',
+    # 'corsheaders',
     'stories',
     'comments',
     'likes',
@@ -129,27 +132,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000', 
-]
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]
-
-CLIENT_ORIGINS = [
-  'http://localhost:3000',
-  'http://127.0.0.1:3000'
-]
-
-# if 'CLIENT_ORIGIN' in os.environ:
-#     CORS_ALLOWED_ORIGINS = [
-#         os.environ.get('CLIENT_ORIGIN')
-#     ]
-# else:
-#     CORS_ALLOWED_ORIGIN_REGEXES = [
-#         r"^https://.*\.gitpod\.io$",
-#     ]
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
