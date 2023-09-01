@@ -9,7 +9,7 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    path('', root_route),
+    # path('', root_route),
     # path(settings.BASE_URL + '/', views.root_route, name='root-route'),
     path('', TemplateView.as_view(template_name='index.html')),
     path('admin/', admin.site.urls),
