@@ -49,10 +49,10 @@ ALLOWED_HOSTS = [
 
 BASE_URL = ''
 
-if DEBUG:
-    BASE_URL = 'http://localhost:8000'
-else:
-    BASE_URL = 'https://story-blog-24bc3af065de.herokuapp.com/' 
+# if DEBUG:
+#     BASE_URL = 'http://localhost:8000'
+# else:
+#     BASE_URL = 'https://story-blog-24bc3af065de.herokuapp.com/' 
     
     
     
@@ -76,7 +76,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
-    # 'corsheaders',
+    'corsheaders',
     'stories',
     'comments',
     'likes',
