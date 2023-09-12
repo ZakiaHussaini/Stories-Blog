@@ -2,6 +2,7 @@
 
 Story Block is a full stack web application for writing, storing, and sharing stories. Users can create accounts to write and organize their own stories or browse and engage with stories from other users.
 
+![story blog](./docs/project.png)
 The app allows users to perform the following actions:
 
 Create, update, and delete their own stories
@@ -120,10 +121,11 @@ These are the user stories that were completed within the projects first release
 
 ### Entity Relationship Diagram
 The ERD contains entities for Users, Profiles, Stories, Categories, Comments, and Likes. Users have a one-to-many relationship with Stories to track which user authored each story. Stories belong to one or more Categories in a many-to-many relationship to allow multiple categorization. Users can make Comments on Stories in a one-to-many relationship. Users also Like Stories in another one-to-many relationship. A one-to-one relationship between Users and Profiles stores additional profile details. Stories have a one-to-many relationship with both Comments and Likes to track those associated with each story. 
+![story blog](./docs/er.jpg)
 
 
 ### Color scheme
-
+![story blog](./docs/colors.png)
 
 
 
@@ -131,10 +133,13 @@ The ERD contains entities for Users, Profiles, Stories, Categories, Comments, an
 ## Features
 ### Navbar
 The navbar located at the top of every page allows users to navigate between the home page which displays the latest stories, feeds page showing all new stories posted by followed users, liked page to view all stories the logged in user has liked, sign out option to log out the current user and redirect to login/registration, and profile page to view details of the logged in user including their name, bio, followed/following counts and all their posted stories along with editing profile options, with the active navbar item styled differently to indicate the current section being viewed and providing a simple consistent exploration of the different areas of the blog.
+![story blog](./docs/nav.png)
 
 ### Home page 
 - The home page of our Stories Blog is designed to provide users with a captivating and immersive experience. where individuals can share their unique narratives, insights, and experiences. 
 These stories cover a wide array of topics.
+![story blog](./docs/Home.png)
+
 
 - Users can explore these stories, read them in detail, and engage with the authors through comments and likes.
 - To enhance user engagement, the home page prominently features a "Most Followed Profiles" section. Users can discover and follow these profiles to stay updated with their latest stories and insights.
@@ -143,33 +148,40 @@ These stories cover a wide array of topics.
 
 ### Create Post page 
 The create post page allows authenticated users to publish new stories on the platform. It provides a simple form to enter the story title, select a category from a dropdown including options, main content, and upload an image to feature with the story. Published stories become immediately visible on the home page feed and can be accessed via category listings and search. 
+![story blog](./docs/addPost.png)
 
 
 ### Post Details Page
 - The post detail page displays the full content of a single story that was published. It includes the title, content body along with any featured image. For authenticated authors of the story, additional action to edit or delete the post. Editing enables updating any part of the story while deleting removes it permanently from the site.
+![story blog](./docs/postDetail.png)
 
 - Other logged-in users will be able to like and comment on the post. Each time a user likes and comments, the number of likes and comments will go up.
+![story blog](./docs/comments.png)
 
 - The comment owner can see the three dots icon button at the top of the comment they made, and by clicking the pencil icon, they can edit their comments. They can also click on the trash icon button to remove their comment from the post.
-
+![story blog](./docs/commentEdit.png)
 
 ### Followings Feed Page
   A "Popular Profiles" component is displayed on all major pages of the site. For desktop screens, the top 10 most followed profiles will be featured. On smaller mobile devices, only the top 4 profiles will be shown due to limited screen space.
+  ![story blog](./docs/feed.png)
 
 ### Profile Page
 The profile page displays a user's public profile information including their image, name, brief bio, count of followers and profiles they follow. For profile owner, additional options are visible in a dropdown menu triggered by a "..." icon to edit the profile details. This allows customizing the bio, changing the profile image, or updating other account settings.
+![story blog](./docs/profile.png)
 
 ### Liked Page
 At this page the users can view all the stories they have liked. It serves as a personalized collection of their favorite content, allowing them to easily revisit and engage with the stories that resonated with them.
-
+![story blog](./docs/liked.png)
 
 ### Sign up Page
 - The sign up page allows new users to create an account on the platform. It contains a simple form to enter the required details including username and password. and after successfully registering, users are directed to the sign in page.
 
 - The user does not have to sign up if they already have an account; they can just sign in with their existing credentials
 
+![story blog](./docs/signup.png)
 ### The Sign in Page
 The sign in page allows registered users to log into their account on the platform. It contains a simple form to enter the username and password that was used during registration. 
+![story blog](./docs/signin.png)
 
 
 ## Technologies Used
