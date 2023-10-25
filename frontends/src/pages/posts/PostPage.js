@@ -35,11 +35,12 @@ function PostPage() {
         setStory({ results: [story] });
         setComments(comments);
       } catch (err) {
+        console.log(err)
       }
     };
 
     handleMount();
-  }, [id]);
+  }, [id, comments]);
 
 
 
