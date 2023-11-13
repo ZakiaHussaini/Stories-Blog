@@ -19,7 +19,7 @@ import PopularProfiles from "../profiles/PopularProfiles";
 
 function PostPage() {
   const { id } = useParams();
-  const [story, setStory] = useState({ results: [] });
+  const [post, setPost] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -28,11 +28,11 @@ function PostPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: story }, { data: comments }] = await Promise.all([
-          axiosReq.get(`/stories/${id}`),
-          axiosReq.get(`/comments/?story=${id}`),
+        const [{ data: post }, { data: comments }] = await Promise.all([
+          axiosReq.get(`/posts/${id}`),
+          axiosReq.get(`/comments/?post=${id}`),
         ]);
-        setStory({ results: [story] });
+        setPost({ results: [post] });
         setComments(comments);
       } catch (err) {
         console.log(err)
@@ -48,14 +48,14 @@ function PostPage() {
     <Row className="h-100">
     <Col className="py-2 p-0 p-lg-2" lg={8}>
     <PopularProfiles mobile />
-      <Post {...story.results[0]} setStory={setStory} postPage />
+      <Post {...post.results[0]} setPost={setPost} postPage />
       <Container className={appStyles.Content}>
         {currentUser ? (
           <CommentCreateForm
             profile_id={currentUser.profile_id}
             profileImage={profile_image}
-            story={id}
-            setStory={setStory}
+            post={id}
+            setPost={setPost}
             setComments={setComments}
           />
         ) : comments.results.length ? (
@@ -67,7 +67,7 @@ function PostPage() {
               <Comment
                 key={comment.id}
                 {...comment}
-                setStory={setStory}
+                setPost={setPost}
                 setComments={setComments}
               />
             ))}

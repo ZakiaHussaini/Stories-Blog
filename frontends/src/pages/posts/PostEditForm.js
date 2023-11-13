@@ -32,7 +32,7 @@ function PostEditForm() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/stories/${id}/`);
+        const { data } = await axiosReq.get(`/posts/${id}/`);
         const { title, content, image, is_owner } = data;
 
         is_owner ? setPostData({ title, content, image }) : history.push("/");
@@ -72,8 +72,8 @@ function PostEditForm() {
     }
 
     try {
-      await axiosReq.put(`/stories/${id}/`, formData);
-      history.push(`/stories/${id}`);
+      await axiosReq.put(`/posts/${id}/`, formData);
+      history.push(`/posts/${id}`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);

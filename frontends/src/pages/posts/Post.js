@@ -22,7 +22,7 @@ const Post = (props) => {
     content,
     image,
     updated_at,
-    setStory,
+    setPost,
     postPage,
   } = props;
 
@@ -33,12 +33,12 @@ const Post = (props) => {
   const MAX_CONTENT_LENGTH = 150;
 
   const handleEdit = () => {
-    history.push(`/stories/${id}/edit`);
+    history.push(`/posts/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/stories/${id}/`);
+      await axiosRes.delete(`/posts/${id}/`);
       history.goBack();
     } catch (err) {
     }
@@ -46,13 +46,13 @@ const Post = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { story: id });
-      setStory((prevStories) => ({
-        ...prevStories,
-        results: prevStories.results.map((story) => {
-          return story.id === id
-            ? { ...story, likes_count: story.likes_count + 1, like_id: data.id }
-            : story;
+      const { data } = await axiosRes.post("/likes/", { post: id });
+      setPost((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+            : post;
         }),
       }));
     } catch (err) {
@@ -62,12 +62,12 @@ const Post = (props) => {
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
-      setStory((prevStories) => ({
-        ...prevStories,
-        results: prevStories.results.map((story) => {
-          return story.id === id
-            ? { ...story, like_count: story.like_count - 1, like_id: null }
-            : story;
+      setPost((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, like_count: post.like_count - 1, like_id: null }
+            : post;
         }),
       }));
     } catch (err) {
@@ -115,7 +115,7 @@ const Post = (props) => {
             </span>
           )}
         </Card.Text>
-        <Link to={`/stories/${id}`}>
+        <Link to={`/posts/${id}`}>
           <Card.Img src={image} alt={title} />
         </Link>
         <div className={styles.PostBar}>
@@ -143,7 +143,7 @@ const Post = (props) => {
             </OverlayTrigger>
           )}
           {like_count}
-          <Link to={`/stories/${id}`}>
+          <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comment_count}

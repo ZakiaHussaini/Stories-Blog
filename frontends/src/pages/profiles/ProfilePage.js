@@ -46,7 +46,7 @@ function ProfilePage() {
         const [{ data: pageProfile }, { data: profilePosts }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
-            axiosReq.get(`/stories/?owner__profile=${id}`),
+            axiosReq.get(`/posts/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -76,7 +76,7 @@ function ProfilePage() {
           <h3 className="m-2">{profile?.owner}</h3>
           <Row className={` ${styles.profContainer} justify-content-center no-gutters `}>
             <Col xs={3} className="my-2">
-              <div>{profile?.stories_count}</div>
+              <div>{profile?.posts_count}</div>
               <div>stories</div>
             </Col>
             <Col xs={3} className="my-2">
@@ -120,8 +120,8 @@ function ProfilePage() {
       <hr />
       {profilePosts.results.length ? (
         <InfiniteScroll
-          children={profilePosts.results.map((story) => (
-            <Post key={story.id} {...story} setStory={setProfilePosts} />
+          children={profilePosts.results.map((post) => (
+            <Post key={post.id} {...post} setPost={setProfilePosts} />
           ))}
           dataLength={profilePosts.results.length}
           loader={<Asset spinner />}

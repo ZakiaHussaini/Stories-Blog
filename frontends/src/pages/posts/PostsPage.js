@@ -38,9 +38,9 @@ function PostsPage({ message, filter = "" }) {
     setSelectedCategoryIndex(categoryId ? 1 : 0);
 
     try {
-      let url = "/stories/";
+      let url = "/posts/";
       if (categoryId) {
-        url = `/categories/${categoryId}/stories/`;
+        url = `/categories/${categoryId}/posts/`;
       }
       const { data } = await axiosReq.get(`${url}?${filter}search=${query}`);
       setPosts(data);
@@ -52,9 +52,9 @@ function PostsPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        let url = "/stories/";
+        let url = "/posts/";
         if (selectedCategory) {
-          url = `/categories/${selectedCategory}/stories/`;
+          url = `/categories/${selectedCategory}/posts/`;
         }
         const { data } = await axiosReq.get(`${url}?${filter}search=${query}`);
         setPosts(data);
