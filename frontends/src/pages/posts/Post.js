@@ -15,14 +15,14 @@ const Post = (props) => {
     owner,
     profile_id,
     profile_image,
-    comment_count,
-    like_count,
+    comments_count,
+    likes_count,
     like_id,
     title,
     content,
     image,
     updated_at,
-    setPost,
+    setPosts,
     postPage,
   } = props;
 
@@ -47,7 +47,7 @@ const Post = (props) => {
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { post: id });
-      setPost((prevPosts) => ({
+      setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
@@ -62,11 +62,11 @@ const Post = (props) => {
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
-      setPost((prevPosts) => ({
+      setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
-            ? { ...post, like_count: post.like_count - 1, like_id: null }
+            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
             : post;
         }),
       }));
@@ -142,11 +142,11 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          {like_count}
+          {likes_count}
           <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
           </Link>
-          {comment_count}
+          {comments_count}
         </div>
       </Card.Body>
     </Card>

@@ -11,7 +11,8 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 
 const Comment = (props) => {
-  const { profile_id, profile_image, owner, id, updated_at, content, setComments, setStory } = props;
+  const { profile_id, profile_image, owner, id, updated_at,
+     content, setComments, setPost } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
   const currentUser = useCurrentUser();
@@ -21,7 +22,7 @@ const Comment = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
-      setStory((prevPost) => ({
+      setPost((prevPost) => ({
         results: [
           {
             ...prevPost.results[0],
