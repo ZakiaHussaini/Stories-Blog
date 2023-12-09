@@ -127,7 +127,7 @@ function PostsPage({ message, filter = "" }) {
             {posts.results.length ? (
               <InfiniteScroll
                 children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
+                  <Post key={post.id} {...post} post={post} setPosts={setPosts} />
                 ))}
                 dataLength={posts.results.length}
                 loader={<Asset spinner />}

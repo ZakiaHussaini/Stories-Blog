@@ -73,3 +73,17 @@
     margin-left: 0.8rem;
 
   }
+
+
+    
+  .saved {
+    color: #2d2d2d;
+  }
+  
+  .saved:hover {
+    color: #2142b2;
+  }
+  
+  .savedOutline:hover {
+    color: #2d2d2d; 
+  }

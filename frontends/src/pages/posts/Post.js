@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from '../../components/MoreDropdown'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
+
 const Post = (props) => {
   const {
+    post,
     id,
     owner,
     profile_id,
@@ -31,6 +33,47 @@ const Post = (props) => {
   const history = useHistory();
   const [showFullContent, setShowFullContent] = useState(false);
   const MAX_CONTENT_LENGTH = 150;
+  const user_id = currentUser?.pk
+
+  // save
+  const [saved, setSaved] = useState(false);
+  const [message, setMessage] = useState('');
+
+
+  useEffect(() => {
+    const checkSavedStatus = async () => {
+      try {
+        const response = await axiosReq.get(`/saved-posts/check/${user_id}/${post.id}/`);
+        setSaved(response.data.saved);
+        console.log(response.data.saved)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    checkSavedStatus();
+  }, [user_id, post.id]);
+
+  const savePost = async () => {
+    try {
+      if (saved) {
+        await axiosReq.delete(`/saved-posts/unsave/${user_id}/${post.id}/`);
+      } else {
+        await axiosReq.post(`/saved-posts/save/${user_id}/${post.id}/`);
+      }
+
+      setSaved(!saved);
+
+      setMessage(saved ? 'Post unsaved!' : 'Post saved!');
+
+      setTimeout(() => {
+        setMessage('');
+      }, 2000);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
@@ -43,6 +86,9 @@ const Post = (props) => {
     } catch (err) {
     }
   };
+
+
+
 
   const handleLike = async () => {
     try {
@@ -73,6 +119,8 @@ const Post = (props) => {
     } catch (err) {
     }
   };
+
+
 
 
 
@@ -147,6 +195,27 @@ const Post = (props) => {
             <i className="far fa-comments" />
           </Link>
           {comments_count}
+
+
+{/* save */}
+
+        {/* <i className="fas fa-save"></i>Saved */}
+
+        {saved ? (<>
+        <i className="fas fa-save" onClick={savePost} style={{ color: 'gray' }}></i> 
+        unSave
+        </>) : (
+          <>
+        <i className="fas fa-save" onClick={savePost} style={{ color: 'outline gray' }}></i>Save
+        </>)}
+      {message && <p>{message}</p>}
+  
+
+
+
+
+
+         
         </div>
       </Card.Body>
     </Card>

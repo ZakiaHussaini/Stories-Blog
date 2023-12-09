@@ -28,6 +28,7 @@ const NavBar = () => {
     }
   };
 
+  
   const addPostIcon = (
     <div className={styles.item}>
       <NavLink
@@ -58,6 +59,18 @@ const NavBar = () => {
         to="/liked"
       >
         <i className="fas fa-heart"></i>Liked
+      </NavLink>
+      </div>
+
+      {/* save post */}
+
+      <div className={styles.item}>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/saved"
+      >
+        <i className="fas fa-save"></i>Saved
       </NavLink>
       </div>
 

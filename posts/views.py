@@ -4,6 +4,9 @@ from django.db.models import Count
 from .models import Post, Category
 from .serializers import PostSerializer, CategorySerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.response import Response
+from rest_framework import status
+
 
 class CategoryListView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
@@ -58,3 +61,9 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
+    
+
+    
+    
+
+    
