@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -40,21 +40,11 @@ const Post = (props) => {
   const [message, setMessage] = useState('');
 
 
-  useEffect(() => {
-    const checkSavedStatus = async () => {
-      try {
-        const response = await axiosReq.get(`/saved-posts/check/${user_id}/${post.id}/`);
-        setSaved(response.data.saved);
-        console.log(response.data.saved)
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    checkSavedStatus();
-  }, [user_id, post.id]);
+  
 
   const savePost = async () => {
+    console.log(user_id, post.id,'saved post')
+
     try {
       if (saved) {
         await axiosReq.delete(`/saved-posts/unsave/${user_id}/${post.id}/`);
@@ -62,7 +52,7 @@ const Post = (props) => {
         await axiosReq.post(`/saved-posts/save/${user_id}/${post.id}/`);
       }
 
-      setSaved(!saved);
+      setSaved((prevSaved) => !prevSaved);
 
       setMessage(saved ? 'Post unsaved!' : 'Post saved!');
 
@@ -199,14 +189,13 @@ const Post = (props) => {
 
 {/* save */}
 
-        {/* <i className="fas fa-save"></i>Saved */}
 
         {saved ? (<>
-        <i className="fas fa-save" onClick={savePost} style={{ color: 'gray' }}></i> 
+        <i className="fas fa-save"  style={{ color: 'gray' }}></i> 
         unSave
         </>) : (
           <>
-        <i className="fas fa-save" onClick={savePost} style={{ color: 'outline gray' }}></i>Save
+        <i className="fas fa-save"  style={{ color: 'outline gray' }}></i>Save
         </>)}
       {message && <p>{message}</p>}
   

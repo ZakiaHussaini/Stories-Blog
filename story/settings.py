@@ -72,14 +72,14 @@ else:
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 
-# DEBUG = 'DEV' in os.environ
+DEBUG = 'DEV' in os.environ
 
-# ALLOWED_HOSTS = ['localhost', 'story-blog-24bc3af065de.herokuapp.com']
-ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['localhost', 'story-blog-24bc3af065de.herokuapp.com']
+# ALLOWED_HOSTS = [
+#     os.environ.get('ALLOWED_HOST'),
+#     'localhost',
+#     '127.0.0.1',
+# ]
 DEBUG = True
 
 
@@ -105,6 +105,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'category',
     'savePost',
     'dj_rest_auth.registration',
     'corsheaders',

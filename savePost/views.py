@@ -5,6 +5,15 @@ from rest_framework.permissions import IsAuthenticated
 from .models import SavedPost
 from .serializers import SavedPostSerializer
 
+
+class SavedPostsListView(generics.ListAPIView):
+    serializer_class = SavedPostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return SavedPost.objects.filter(user=user)
+
 class SavedPostCheckView(generics.RetrieveAPIView):
     serializer_class = SavedPostSerializer
     permission_classes = [IsAuthenticated]

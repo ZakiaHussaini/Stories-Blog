@@ -1,15 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 
-const SavePost = ({ postId, onSave }) => {
-  const handleSave = async () => {
-    try {
-      await axios.patch(`/api/posts/${postId}/save/`);
-      onSave(postId); // Notify parent component that the post has been saved
-    } catch (error) {
-      console.log(error)
-    }
-  };
+const SavePost = () => {
+  const [savedPosts, setSavedPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchSavedPosts = async () => {
+      try {
+        const response = await axiosReq.get("/saved-posts/");
+        setSavedPosts(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSavedPosts();
+  }, []);
+
 
   return (
     <button onClick={handleSave}>

@@ -1,12 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from category.models import Category
+from category.models import  Category
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-    
-    def __str__(self):
-        return self.name
+
+
 
 
 class Post(models.Model):
@@ -39,7 +38,7 @@ class Post(models.Model):
     image_filter = models.CharField(
         max_length=32, choices=image_filter_choices, default='normal'
     )
-    # new
+
     saved_by = models.ManyToManyField(User, related_name='saved_posts', blank=True)
 
     class Meta:
