@@ -15,22 +15,22 @@ urlpatterns = [
 
     
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),    
-    path('dj-rest-auth/logout/', logout_route),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('api/api-auth/', include('rest_framework.urls')),
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')),    
+    path('api/dj-rest-auth/logout/', logout_route),
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
     path(
-        'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
+        'api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
     ),
-    path('', include('profiles.urls')),
+    path('api/', include('profiles.urls')),
     
     
-    path('', include('posts.urls')),
-    path('', include('comments.urls')),
-    path('', include('likes.urls')),
-    path('', include('followers.urls')),
-    path('', include('savePost.urls')),
-    path('', include('category.urls')),
+    path('api/', include('posts.urls')),
+    path('api/', include('comments.urls')),
+    path('api/', include('likes.urls')),
+    path('api/', include('followers.urls')),
+    path('api/', include('savePost.urls')),
+    path('api/', include('category.urls')),
     
 
     
