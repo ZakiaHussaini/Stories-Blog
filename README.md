@@ -155,7 +155,7 @@ These stories cover a wide array of topics.
 
 ### Create Post page 
 The create post page allows authenticated users to publish new stories on the platform. It provides a simple form to enter the story title, select a category from a dropdown including options, main content, and upload an image to feature with the story. Published stories become immediately visible on the home page feed and can be accessed via category listings and search. 
-![story blog](./docs/addPost.png)
+![story blog](./docs/addP.PNG)
 
 
 ### Post Details Page
@@ -163,13 +163,14 @@ The create post page allows authenticated users to publish new stories on the pl
 ![story blog](./docs/postDetail2.PNG)
 
 - Other logged-in users will be able to like and comment on the post. Each time a user likes and comments, the number of likes and comments will go up.
+  
 ![story blog](./docs/comments.png)
 
 - The comment owner can see the three dots icon button at the top of the comment they made, and by clicking the pencil icon, they can edit their comments. They can also click on the trash icon button to remove their comment from the post.
 ![story blog](./docs/commentEdit.png)
 
 - By clicking the save icon, the user can save the post.
-- ![story blog](./docs/save.PNG)
+![story blog](./docs/save.PNG)
 
 
 ### Followings Feed Page
