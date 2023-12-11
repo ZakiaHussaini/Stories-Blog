@@ -44,8 +44,10 @@ These are the user stories that were completed within the projects first release
 - Avatar
     *  As a role I want to customize my profile with an avatar so that I can represent myself visually in the app
 
-- Create posts
+- Create story
     *  As a a logged in user I want to be able to make new posts so that I can share my thoughts, content or information with others.
+ 
+    * As a user of the story blog, I want to be able to create a new story and assign it to a specific category. This will allow me and other users to browse and filter stories based on their preferred categories, enhancing the overall user experience.
 
 - View a post
     *  As a role I want to be able to open and view details of any post so that I can learn more about shared content items or discussions
@@ -69,7 +71,11 @@ These are the user stories that were completed within the projects first release
 
 - Post page
     *  As a role I want to able to open any post in a full-screen page so that I can view and engage with content in more detail
-
+ 
+- Save Story
+    *  As a user of the story blog, I want to have the ability to save stories that catch my attention. This feature will allow me to create a personalized collection of saved stories, making it convenient for me to access and read them again in the future.
+ 
+      
 - Edit post
     *  As a post owner I can edit my post title and description so that I can make corrections or update my post after it was created
 
@@ -133,12 +139,13 @@ The ERD contains entities for Users, Profiles, Stories, Categories, Comments, an
 ## Features
 ### Navbar
 The navbar located at the top of every page allows users to navigate between the home page which displays the latest stories, feeds page showing all new stories posted by followed users, liked page to view all stories the logged in user has liked, sign out option to log out the current user and redirect to login/registration, and profile page to view details of the logged in user including their name, bio, followed/following counts and all their posted stories along with editing profile options, with the active navbar item styled differently to indicate the current section being viewed and providing a simple consistent exploration of the different areas of the blog.
-![story blog](./docs/nav.png)
+
+![story blog](./docs/nav2.PNG)
 
 ### Home page 
 - The home page of our Stories Blog is designed to provide users with a captivating and immersive experience. where individuals can share their unique narratives, insights, and experiences. 
 These stories cover a wide array of topics.
-![story blog](./docs/Home.png)
+![story blog](./docs/home2.PNG)
 
 
 - Users can explore these stories, read them in detail, and engage with the authors through comments and likes.
@@ -153,7 +160,7 @@ The create post page allows authenticated users to publish new stories on the pl
 
 ### Post Details Page
 - The post detail page displays the full content of a single story that was published. It includes the title, content body along with any featured image. For authenticated authors of the story, additional action to edit or delete the post. Editing enables updating any part of the story while deleting removes it permanently from the site.
-![story blog](./docs/postDetail.png)
+![story blog](./docs/postDetail2.PNG)
 
 - Other logged-in users will be able to like and comment on the post. Each time a user likes and comments, the number of likes and comments will go up.
 ![story blog](./docs/comments.png)
@@ -161,17 +168,25 @@ The create post page allows authenticated users to publish new stories on the pl
 - The comment owner can see the three dots icon button at the top of the comment they made, and by clicking the pencil icon, they can edit their comments. They can also click on the trash icon button to remove their comment from the post.
 ![story blog](./docs/commentEdit.png)
 
+- By clicking the save icon, the user can save the post.
+- ![story blog](./docs/save.PNG)
+
+
 ### Followings Feed Page
   A "Popular Profiles" component is displayed on all major pages of the site. For desktop screens, the top 10 most followed profiles will be featured. On smaller mobile devices, only the top 4 profiles will be shown due to limited screen space.
-  ![story blog](./docs/feed.png)
+  ![story blog](./docs/f_feed.PNG)
 
 ### Profile Page
 The profile page displays a user's public profile information including their image, name, brief bio, count of followers and profiles they follow. For profile owner, additional options are visible in a dropdown menu triggered by a "..." icon to edit the profile details. This allows customizing the bio, changing the profile image, or updating other account settings.
-![story blog](./docs/profile.png)
+![story blog](./docs/prof.PNG)
 
 ### Liked Page
 At this page the users can view all the stories they have liked. It serves as a personalized collection of their favorite content, allowing them to easily revisit and engage with the stories that resonated with them.
-![story blog](./docs/liked.png)
+![story blog](./docs/like2.PNG)
+
+### Saved Page
+At this page the users can view all the stories they have saved. 
+![story blog](./docs/like2.PNG)
 
 ### Sign up Page
 - The sign up page allows new users to create an account on the platform. It contains a simple form to enter the required details including username and password. and after successfully registering, users are directed to the sign in page.
@@ -231,9 +246,6 @@ I utilised a manual testing strategy for the development of the site. Seperate t
 
 ### Manual Testing
 Manual testing was performed consistently app-wide to ensure a smooth and positive user experience.
-
-### Lighthouse Testing
-Below you can see the results of Googles Lighthouse Testing.
 
 
 
@@ -308,6 +320,8 @@ Before the application will be handeled to the client in the realise 1.0 stage, 
   - [React Bootstrap Documentation](https://react-bootstrap.github.io/getting-started/introduction)
 
 
+#### Bugs
+- The website is currently experiencing slow loading times. I have made efforts to minimize the issue, but it is still loading slowly.
 
 
 
@@ -322,6 +336,7 @@ The [Story Blog API](https://story-blog-24bc3af065de.herokuapp.com/) a simple bl
 - likes
 - comments
 - categories
+- saved post
 
 
 ## __Technologies Used__
@@ -390,6 +405,16 @@ The [Story Blog API](https://story-blog-24bc3af065de.herokuapp.com/) a simple bl
 - Detail View (Read, Update, Delete if owner)
 - Detail View (Read if not owner)
 - Detail View (Read if not logged in)
+
+#### **Category App**
+- List View (Read, Create if logged in)
+- List View (Read if not logged in)
+
+  #### **savePost App**
+- List View (Read, Create if logged in)
+- List View (Read if not logged in)
+- Detail View (Read, Delete if owner)
+- Detail View (Read if not owner)
 
 
 
