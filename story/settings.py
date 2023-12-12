@@ -80,7 +80,7 @@ ALLOWED_HOSTS = ['localhost', 'story-blog-24bc3af065de.herokuapp.com']
 #     'localhost',
 #     '127.0.0.1',
 # ]
-DEBUG = True
+DEBUG = False
 
 
 INSTALLED_APPS = [
